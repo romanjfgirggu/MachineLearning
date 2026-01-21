@@ -6,7 +6,7 @@ import sqlite3 # Работа с БД
 
 # Загрузка базы данных
 try:
-    con = sqlite3.connect(r"C:\Users\demoexam\Cross_sections_modules\Number_1\clear_data.db")
+    con = sqlite3.connect(r"C:\Users\demoexam\Desktop\Гурбанов\MachineLearning\Проект №6 (последний срез)\clear_data.db")
     df = pd.read_sql("SELECT * FROM Clear_data", con=con)
 except Exception as e:
     print(f"Ошибка в загрузке базы данных: {e}")
