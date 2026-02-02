@@ -1,3 +1,5 @@
+import datetime
+
 from fastapi import FastAPI
 import uvicorn
 from joblib import dump, load
@@ -68,6 +70,14 @@ def check_features(lat: float, lon: float, radius=500) -> dict[str, int]:
 
 
 def row_created(lat: float, lon: float, time: Union[date, None]) -> pd.DataFrame():
+    """
+    Добавляет к широте и долготе дополнительные данные для модели машинного обучения.
+    Args:
+        lat (float): Широта точки
+        lon (float): Долгота точки
+        time (date): Время
+
+    """
     if not time:
         time = date.today()
     else:
@@ -91,8 +101,7 @@ def row_created(lat: float, lon: float, time: Union[date, None]) -> pd.DataFrame
 
     row = pd.DataFrame({"time": [time], "latitude": [lat], "longitude": [lon], "elevation": [elevation],
                          "temperature": [temperature], "water_feature": [features["water"]],
-                         "forest_feature": [features["forest"]], "buildings_feature": [features["buildings"]],
-                         "place_type": [max(features.items(), key=lambda x: x[1])[0]]})
+                         "forest_feature": [features["forest"]], "buildings_feature": [features["buildings"]]})
     row["time"] = pd.to_datetime(row["time"])
     row['date_day'] = row['time'].dt.day
     row['date_month'] = row['time'].dt.month
@@ -102,17 +111,59 @@ def row_created(lat: float, lon: float, time: Union[date, None]) -> pd.DataFrame
     return row
 
 def import_model(target: str):
+    """
+    Загружает модель по ее названию (ее таргету).
+    Args:
+        target (str): Название/таргет модели.
+    """
+
     try:
-        return load(f"C:\\Users\\User\\Desktop\\Профики\\MachineLearning\\Проект №6 (последний срез)\\{target}.joblib")
+        return load(f"C:\\Users\\demoexam\\Desktop\\Гурбанов\\MachineLearning\\Проект №6 (последний срез)\\{target}.joblib")
     except Exception as e:
         return f"Ошибка в загрузке модели: {e}"
 
 
-@app.get("/dangerous/{lat}/{long}")
-def get_dangerous(lat: float, lon: float):
-    model = import_model("dangerous")
-    row = row_created(lat, lon, time=None)
-    print(model.predict(row))
+@app.get("/get_common_dangerous/{lat}/{long}")
+def get_common_dangerous(lat: float, long: float):
+    """
+    Get запрос, получающий общую опасности точки
+    Args:
+        lat (float): Широта точки
+        long (float): Долгота точки
+    """
+    model_common_dangerous = import_model("dangerous")
+    row = row_created(lat, long, time=None)
+    return {"common_dangerous_predict": int(model_common_dangerous.predict(row)[0])}
+
+
+@app.get("/get_fire_dangerous/{lat}/{long}")
+def get_fire_dangerous(lat: float, long: float, time = date.today()):
+    """
+    Get запрос, получающий общую пожароопасность точки.
+    Args:
+        lat (float): Широта точки
+        long (float): Долгота точки
+        time (date): Время
+    """
+
+    row = row_created(lat, long, time)
+    model_fire_dangerous = import_model("fire")
+    return {"fire_dangerous_predict": int(model_fire_dangerous.predict(row)[0])}
+
+
+@app.get("/get_flood_dangerous/{lat}/{long}")
+def get_flood_dangerous(lat: float, long: float, time=date.today()):
+    """
+    Get запрос, получающий общую опасность наводнения точки.
+    Args:
+        lat (float): Широта точки
+        long (float): Долгота точки
+        time (date): Время
+    """
+
+    row = row_created(lat, long, time)
+    model_flood_dangerous = import_model("flood")
+    return {"flood_dangerous_predict": int(model_flood_dangerous.predict(row)[0])}
 
 
 if __name__ == '__main__':
