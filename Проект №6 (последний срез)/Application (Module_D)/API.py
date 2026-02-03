@@ -166,5 +166,20 @@ def get_flood_dangerous(lat: float, long: float, time=date.today()):
     return {"flood_dangerous_predict": int(model_flood_dangerous.predict(row)[0])}
 
 
+@app.get("/get_evacuation_dangerous/{lat}/{long}")
+def get_evacuation_dangerous(lat: float, long: float, time=date.today()):
+    """
+    Get запрос, получающий сложность эвакуации точки.
+    Args:
+        lat (float): Широта точки
+        long (float): Долгота точки
+        time (date): Время
+    """
+
+    row = row_created(lat, long, time)
+    model_evacuation_dangerous = import_model("evacuation")
+    return {"evacuation_dangerous_predict": int(model_evacuation_dangerous.predict(row)[0])}
+
+
 if __name__ == '__main__':
     uvicorn.run(app, host="127.0.0.1", port=8000)
