@@ -92,8 +92,6 @@ def get_predictions(target: str, year: int, track: int):
         track(int): Номер трека, по которому будет предсказывание
     """
     sort_data = data[data["track_id"] == track]
-    # Для проверки
-    sort_data = sort_data[:10]
     if int(date(year, 1, 1).year) > int(date.today().year):
         points_predictions = {}
         period = year - int(date.today().year)

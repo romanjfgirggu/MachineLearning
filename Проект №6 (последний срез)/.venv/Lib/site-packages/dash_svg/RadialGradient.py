@@ -1,0 +1,268 @@
+# AUTO GENERATED FILE - DO NOT EDIT
+
+from dash.development.base_component import Component, _explicitize_args
+
+
+class RadialGradient(Component):
+    """A RadialGradient component.
+RadialGradient is a wrapper for the <radialGradient> SVG element.
+For detailed attribute info see:
+https://developer.mozilla.org/en-US/docs/Web/SVG/Element/radialGradient
+
+Keyword arguments:
+
+- children (a list of or a singular dash component, string or number; optional):
+    The children of this component.
+
+- id (string; optional):
+    The ID of this component, used to identify dash components in
+    callbacks. The ID needs to be unique across all of the components
+    in an app.
+
+- aria-* (string; optional):
+    A wildcard aria attribute.
+
+- className (string; optional):
+    Often used with CSS to style elements with common properties.
+
+- colorInterpolation (string | number; optional):
+    The color-interpolation attribute specifies the color space for
+    gradient interpolations, color animations, and alpha
+    compositing.Note:  For filter effects, the
+    color-interpolation-filters property  controls which color space
+    is used.The color-interpolation  property chooses between color
+    operations occurring in  the sRGB color space or in a (light
+    energy linear) linearized  RGB color space. Having chosen the
+    appropriate color space,  component-wise linear interpolation is
+    used.When a child  element is blended into a background, the value
+    of the  color-interpolation property on the child determines the
+    type of blending, not the value of the color-interpolation  on the
+    parent. For gradients which make use of the href  or the
+    deprecated xlink:href attribute to reference another  gradient,
+    the gradient uses the property's value from  the gradient element
+    which is directly referenced by the  fill or stroke property. When
+    animating colors, color  interpolation is performed according to
+    the value of the  color-interpolation property on the element
+    being animated.Note:  As a presentation attribute,
+    color-interpolation can be  used as a CSS property.You can use
+    this attribute with  the following SVG elements:Indicates that the
+    user agent  can choose either the sRGB or linearRGB spaces for
+    color  interpolation. This option indicates that the author
+    doesn't  require that color interpolation occur in a particular
+    color space.Indicates that color interpolation should  occur in
+    the sRGB color space.Indicates that color interpolation  should
+    occur in the linearized RGB color space as described  in the sRGB
+    specification.BCD tables only load in the  browser with JavaScript
+    enabled. Enable JavaScript to  view data.Last modified: May 13,
+    2022, by MDN contributors.
+
+- cx (string | number; optional):
+    The cx attribute define the x-axis coordinate of a center
+    point.You  can use this attribute with the following SVG
+    elements:For  <circle>, cx defines the x-axis coordinate of the
+    center  of the shape.Note: Starting with SVG2 cx, is a Geometry
+    Property, meaning this attribute can also be used as CSS  property
+    for circles.For <ellipse>, cx defines the x-axis  coordinate of
+    the center of the shape.Note: Starting with  SVG2 cx, is a
+    Geometry Property, meaning this attribute  can also be used as CSS
+    property for ellipses.For <radialGradient>,  cx defines the x-axis
+    coordinate of the end circle for  the radial gradient.Last
+    modified: May 13, 2022, by MDN  contributors.
+
+- cy (string | number; optional):
+    The cy attribute define the y-axis coordinate of a center
+    point.You  can use this attribute with the following SVG
+    elements:For  <circle>, cy defines the y-axis coordinate of the
+    center  of the shape.Note: Starting with SVG2, cy is a Geometry
+    Property meaning this attribute can also be used as a  CSS
+    property for circles.For <ellipse>, cy defines the  y-axis
+    coordinate of the center of the shape.Note: Starting  with SVG2,
+    cy is a Geometry Property meaning this attribute  can also be used
+    as a CSS property for ellipses.For <radialGradient>,  cy defines
+    the y-axis coordinate of the end circle for  the radial
+    gradient.Last modified: May 13, 2022, by MDN  contributors.
+
+- data-* (string; optional):
+    A wildcard data attribute.
+
+- fill (string; optional):
+    fill color.
+
+- fx (string | number; optional):
+    The fx attribute defines the x-axis coordinate of the focal point
+    for a radial gradient.You can use this attribute with  the
+    following SVG elements:BCD tables only load in the  browser with
+    JavaScript enabled. Enable JavaScript to  view data.Last modified:
+    May 13, 2022, by MDN contributors.
+
+- fy (string | number; optional):
+    The fy attribute defines the y-axis coordinate of the focal point
+    for a radial gradient.You can use this attribute with  the
+    following SVG elements:BCD tables only load in the  browser with
+    JavaScript enabled. Enable JavaScript to  view data.Last modified:
+    May 13, 2022, by MDN contributors.
+
+- gradientTransform (string; optional):
+    The gradientTransform attribute contains the definition of an
+    optional additional transformation from the gradient coordinate
+    system onto the target coordinate system (i.e., userSpaceOnUse  or
+    objectBoundingBox). This allows for things such as  skewing the
+    gradient. This additional transformation matrix  is
+    post-multiplied to (i.e., inserted to the right of)  any
+    previously defined transformations, including the  implicit
+    transformation necessary to convert from object  bounding box
+    units to user space.You can use this attribute  with the following
+    SVG elements:A list of transformation  functions specifying some
+    additional transformation from  the gradient coordinate system
+    onto the target coordinate  system.BCD tables only load in the
+    browser with JavaScript  enabled. Enable JavaScript to view
+    data.Last modified:  May 13, 2022, by MDN contributors.
+
+- gradientUnits (string; optional):
+    The gradientUnits attribute defines the coordinate system used
+    for attributes specified on the gradient elements.You  can use
+    this attribute with the following SVG elements:For
+    <linearGradient>, gradientUnits defines the coordinate  system
+    used for the attributes x1, y1, x2, and y2.        This value
+    indicates that the attributes represent  values in the coordinate
+    system that results from taking  the current user coordinate
+    system in place at the time  when the gradient element is
+    referenced (i.e., the user  coordinate system for the element
+    referencing the gradient  element via a fill or stroke property)
+    and then applying  the transform specified by attribute
+    gradientTransform.        Percentages represent values relative to
+    the current  SVG viewport.     This value indicates that the user
+    coordinate  system for the attributes is established using the
+    bounding  box of the element to which the gradient is applied and
+    then applying the transform specified by attribute
+    gradientTransform.Percentages  represent values relative to the
+    bounding box for the  object.With this value and gradientTransform
+    being the  identity matrix, the normal of the linear gradient is
+    perpendicular to the gradient vector in object bounding  box space
+    (i.e., the abstract coordinate system where  (0,0) is at the
+    top/left of the object bounding box and  (1,1) is at the
+    bottom/right of the object bounding box).  When the object's
+    bounding box is not square, the gradient  normal which is
+    initially perpendicular to the gradient  vector within object
+    bounding box space may render non-perpendicular  relative to the
+    gradient vector in user space. If the  gradient vector is parallel
+    to one of the axes of the  bounding box, the gradient normal will
+    remain perpendicular.  This transformation is due to application
+    of the non-uniform  scaling transformation from bounding box space
+    to user  space.For <radialGradient>, gradientUnits defines the
+    coordinate system used for the attributes cx, cy, r, fx,  fy, and
+    fr.cx, cy, r, fx, fy, and fr represent values  in the coordinate
+    system that results from taking the  current user coordinate
+    system in place at the time when  the gradient element is
+    referenced (i.e., the user coordinate  system for the element
+    referencing the gradient element  via a fill or stroke property)
+    and then applying the transform  specified by attribute
+    gradientTransform.       for <radialGradient>:  the user
+    coordinate system for attributes cx, cy, r, fx,  fy, and fr is
+    established using the bounding box of the  element to which the
+    gradient is applied (see Object bounding  box units) and then
+    applying the transform specified by  attribute gradientTransform.
+    With this value and  gradientTransform being the identity matrix,
+    the rings  of the radial gradient are circular with respect to the
+    object bounding box space (i.e., the abstract coordinate  system
+    where (0,0) is at the top/left of the object bounding  box and
+    (1,1) is at the bottom/right of the object bounding  box). When
+    the object's bounding box is not square, the  rings that are
+    conceptually circular within object bounding  box space will
+    render as elliptical due to application  of the non-uniform
+    scaling transformation from bounding  box space to user space.
+    Last modified: May 13, 2022,  by MDN contributors.
+
+- key (string; optional):
+    A unique identifier for the component, used to improve performance
+    by React.js while rendering components See
+    https://reactjs.org/docs/lists-and-keys.html for more info.
+
+- loading_state (dict; optional):
+    Object that holds the loading state object coming from
+    dash-renderer.
+
+    `loading_state` is a dict with keys:
+
+    - component_name (string; optional):
+        Holds the name of the component that is loading.
+
+    - is_loading (boolean; optional):
+        Determines if the component is loading or not.
+
+    - prop_name (string; optional):
+        Holds which property is loading.
+
+- n_clicks (number; default 0):
+    An integer that represents the number of times that this element
+    has been clicked on.
+
+- n_clicks_timestamp (number; default -1):
+    An integer that represents the time (in ms since 1970) at which
+    n_clicks changed. This can be used to tell which button was
+    changed most recently.
+
+- r (string; optional):
+    The r attribute defines the radius of a circle.You can use this
+    attribute with the following SVG elements:For <circle>,  r defines
+    the radius of the circle and therefor its size.  With a value
+    lower or equal to zero the circle won't be  drawn at all.Note:
+    Starting with SVG2, r is a Geometry  Property meaning this
+    attribute can also be used as a  CSS property for circles.For
+    <radialGradient>, r defines  the radius of the end circle for the
+    radial gradient.The  gradient will be drawn such that the 100%
+    gradient stop  is mapped to the perimeter of this end circle. A
+    value  of lower or equal to zero will cause the area to be painted
+    as a single color using the color and opacity of the last
+    gradient <stop>.Last modified: May 13, 2022, by MDN contributors.
+
+- role (string; optional):
+    The ARIA role attribute.
+
+- spreadMethod (string; optional):
+    The spreadMethod attribute determines how a shape is filled beyond
+    the defined edges of a gradient.You can use this attribute  with
+    the following SVG elements:This value indicates that  the final
+    color of the gradient fills the shape beyond  the gradient's
+    edges.This value indicates that the gradient  repeats in reverse
+    beyond its edges.This value specifies  that the gradient repeats
+    in the original order beyond  its edges.By default, a gradient
+    reaches to the edges  of the shape being filled. To see the
+    effects of this  attribute, you will need to set the size of the
+    gradient  smaller than the shape.In the case of a linear gradient,
+    the edges may be defined as a rectangle by the x1, x2,  y1 and y2
+    attributes. In the case of a radial gradient,  the edges may be
+    defined as outer and inner circles by  the cx, cy and r (outer)
+    and fx, fy and fr (inner) attributes.Notice  that the middle third
+    of each gradient is the same. The  outer thirds show the
+    difference between the three spread  methods.BCD tables only load
+    in the browser with JavaScript  enabled. Enable JavaScript to view
+    data.Last modified:  May 13, 2022, by MDN contributors.
+
+- style (dict with strings as keys and values of type string | number; optional):
+    CSS style to apply to the element.
+
+- transform (string; optional):
+    Transformation to apply to the element.
+
+- x (string | number; optional):
+    x position.
+
+- y (string | number; optional):
+    y position."""
+    _children_props = []
+    _base_nodes = ['children']
+    _namespace = 'dash_svg'
+    _type = 'RadialGradient'
+    @_explicitize_args
+    def __init__(self, children=None, id=Component.UNDEFINED, n_clicks=Component.UNDEFINED, n_clicks_timestamp=Component.UNDEFINED, key=Component.UNDEFINED, role=Component.UNDEFINED, colorInterpolation=Component.UNDEFINED, cx=Component.UNDEFINED, cy=Component.UNDEFINED, fx=Component.UNDEFINED, fy=Component.UNDEFINED, gradientTransform=Component.UNDEFINED, gradientUnits=Component.UNDEFINED, r=Component.UNDEFINED, spreadMethod=Component.UNDEFINED, className=Component.UNDEFINED, transform=Component.UNDEFINED, style=Component.UNDEFINED, x=Component.UNDEFINED, y=Component.UNDEFINED, fill=Component.UNDEFINED, loading_state=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['children', 'id', 'aria-*', 'className', 'colorInterpolation', 'cx', 'cy', 'data-*', 'fill', 'fx', 'fy', 'gradientTransform', 'gradientUnits', 'key', 'loading_state', 'n_clicks', 'n_clicks_timestamp', 'r', 'role', 'spreadMethod', 'style', 'transform', 'x', 'y']
+        self._valid_wildcard_attributes =            ['data-', 'aria-']
+        self.available_properties = ['children', 'id', 'aria-*', 'className', 'colorInterpolation', 'cx', 'cy', 'data-*', 'fill', 'fx', 'fy', 'gradientTransform', 'gradientUnits', 'key', 'loading_state', 'n_clicks', 'n_clicks_timestamp', 'r', 'role', 'spreadMethod', 'style', 'transform', 'x', 'y']
+        self.available_wildcard_properties =            ['data-', 'aria-']
+        _explicit_args = kwargs.pop('_explicit_args')
+        _locals = locals()
+        _locals.update(kwargs)  # For wildcard attrs and excess named props
+        args = {k: _locals[k] for k in _explicit_args if k != 'children'}
+
+        super(RadialGradient, self).__init__(children=children, **args)
