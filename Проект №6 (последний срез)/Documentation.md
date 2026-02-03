@@ -115,20 +115,24 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
+### 6.2 Запуск Веб-приложения (на фоне так же запускает API-сервис)
+```bash
+python "Проект №6 (последний срез)/Application (Module_D)/main.py"
+```
 
-### 6.2. Запуск Веб-приложения (Module_D/app.py)
+### 6.3. Запуск Веб-приложения (без API) (Module_D/app.py)
 ```bash
 python "Проект №6 (последний срез)/Application (Module_D)/app.py"
 ```
 После запуска приложение будет доступно по адресу, указанному в логах Dash.
 
-### 6.3. Запуск API-сервиса (Module_D/main.py)
+### 6.4. Запуск API-сервиса (Module_D/main.py)
 ```bash
 python "Проект №6 (последний срез)/Application (Module_D)/main.py"
 ```
 По умолчанию сервис стартует на `http://127.0.0.1:8000`.
 
-### 6.4. Запуск Дэшборда (Module_B/main.py)
+### 6.5. Запуск Дэшборда (Module_B/main.py)
 ```bash
 python "Проект №6 (последний срез)/Dash (Module_B)/main.py"
 ```
